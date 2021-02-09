@@ -15,7 +15,7 @@ $ make      # start
 $ make down # stop
 ```
 
-Dashboard available here: http://dashboard.dev.localhost
+Dashboard available here: https://dashboard.dev.localhost
 
 ## Example of web service (whoami)
 
@@ -24,7 +24,7 @@ $ make whoami-up   # start
 $ make whoami-down # stop
 ```
 
-Whoami available here: http://whoami.dev.localhost
+Whoami available here: https://whoami.dev.localhost
 
 ## Remarks
 
