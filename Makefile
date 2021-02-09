@@ -1,7 +1,6 @@
 all: up
 
-# .env
-
+# Create .env if doesn't exists & load it
 $(shell test -f .env || cp .env.example .env)
 include .env
 
