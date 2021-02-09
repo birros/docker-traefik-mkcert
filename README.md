@@ -7,4 +7,12 @@ $ brew install mkcert
 $ brew install nss
 $ mkcert -install
 $ make
+$ make down
+```
+
+## Whoami (service example)
+
+```shell
+$ make whoami-up
+$ make whoami-down
 ```
