@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  traefik:
+    image: traefik:${TRAEFIK_VERSION:-v2.4.2}
+    container_name: traefik
+    restart: on-failure
+    ports:
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./traefik/ssl.yml:/etc/traefik/ssl.yml:ro
+      - ./traefik/certs:/etc/traefik/certs:ro
+    networks:
+      - reverse-proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashboard.entrypoints=https"
+      - "traefik.http.routers.dashboard.tls=true"
+      - "traefik.http.routers.dashboard.rule=Host(`${DASHBOARD_HOST}`)"
+      - "traefik.http.routers.dashboard.service=api@internal"
+
+networks:
+  reverse-proxy:
+    external: true
