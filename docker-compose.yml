@@ -3,7 +3,6 @@ version: '2'
 services:
   traefik:
     image: traefik:${TRAEFIK_VERSION:-v2.4.2}
-    container_name: traefik
     restart: on-failure
     privileged: true
     ports:

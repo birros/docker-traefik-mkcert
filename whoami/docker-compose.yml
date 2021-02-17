@@ -3,7 +3,6 @@ version: '2'
 services:
   whoami:
     image: traefik/whoami:${WHOAMI_VERSION:-v1.6.1}
-    container_name: whoami
     networks:
       - reverse-proxy
     labels:
