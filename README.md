@@ -28,9 +28,21 @@ Whoami available here: https://whoami.dev.localhost
 
 ## Remarks
 
-By default **macOS** and **linux** point subdomains `<subdomain>.localhost` to
-`localhost`, which is not necessarily the case on all systems, it may be
-necessary to manually edit `/etc/hosts` in order to add these redirections.
+By default only **linux** point addresses `<subdomain>.localhost` to
+`localhost`, which is not necessarily the case on all systems. In this case a
+solution could be to use dnsmasq to point the `<subdomain>.localhost` addresses
+to `localhost`.
+
+### macOS
+
+```shell
+$ brew install dnsmasq
+$ mkdir -pv $(brew --prefix)/etc/
+$ echo 'address=/.localhost/127.0.0.1' >> $(brew --prefix)/etc/dnsmasq.conf
+$ sudo brew services start dnsmasq
+$ sudo mkdir -v /etc/resolver
+$ sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/localhost'
+````
 
 <!-- Links -->
 
